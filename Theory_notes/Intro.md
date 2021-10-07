@@ -1,5 +1,6 @@
 # OOP
 
+
 [toc]
 
 ## Infos
@@ -70,3 +71,40 @@ Oggetto = istanza
 ```C
 x = 5;
 ```
+
+Classe solo struttura dei dati  
+reificazioni $\to$ passo da classe a istanza
+
+```C
+  int r; //Global variable
+//blocco
+{
+  int x; //scope
+}
+x = 5; //error
+
+```
+### Programmazione strutturata
+costrutto selezione o scelta ```if```  
+costrutto iterazione ```for(), while()```  
+
+eccezione è prima dell'errore
+
+```
+int vect[20];
+void sort() { /* sort */ }
+int search(int n){ /* search */ }
+void init() { /* init */ }
+// …
+int i;
+void main(){
+  init();
+  sort();
+  search(13);
+}
+```
+### Vector
+- It is not possible to consider a vector
+as a primitive and modular concept
+- Data and functions cannot be
+modularized properly
