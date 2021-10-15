@@ -260,3 +260,19 @@ m.cognome = "Neri"
 
 tutte le istanze hanno la stessa struttura
 it was doing pretty bad and that is a good thing and today i'll go
+
+### Type
+
+- int (int (32 bit), short (16b), long(64))
+- floating point (float, double)
+- char (16 bit)
+- byte (8 bit)
+- boolean (false, true)
+
+```java
+String s = "Questa e' la mia prima stringa";
+System.out.println(s);
+String s1 = new String();
+System.out.println(s1);
+```
+
