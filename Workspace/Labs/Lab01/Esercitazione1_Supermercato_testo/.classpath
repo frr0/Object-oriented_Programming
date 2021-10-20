@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="Esercitazione1_Supermercato_test.jar" sourcepath="Esercitazione1_Supermercato_test.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="src" path="it/polito/po/test"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

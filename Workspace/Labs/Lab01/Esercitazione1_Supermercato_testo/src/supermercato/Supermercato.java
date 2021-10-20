@@ -1,5 +1,7 @@
 package supermercato;
 
+import javax.print.event.PrintEvent;
+
 public class Supermercato {
 
     // Inserire tutti gli attributi necessari, eventualmente creare altre classi
@@ -77,7 +79,14 @@ public class Supermercato {
   * Restituisce il numero di giorni i cui costi sono coperti
   */  
   public double giorniCoperti() {
-    double prezzo_tot = 0; for(int i=0; i<n_vendite; i++) { prezzo_tot =+((double)vendite[i].Unità * (double)vendite[i].Prezzo); }
+    double prezzo_tot = 0; for(int i=0; i<n_vendite; i++) { 
+    	prezzo_tot +=(vendite[i].Unità * vendite[i].Prezzo); 
+      System.out.println(vendite[i].Unità);
+      System.out.println(vendite[i].Prezzo);
+    }
+    System.out.println(n_vendite);
+    System.out.println(prezzo_tot);
+    System.out.println(costo);
     return prezzo_tot/costo;
   }
 }

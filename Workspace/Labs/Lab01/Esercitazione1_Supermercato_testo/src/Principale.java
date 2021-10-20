@@ -1,5 +1,5 @@
 import supermercato.Supermercato;
-import supermercato.Vendita;
+/* import supermercato.Vendita; */
 
 /**
  * Classe con un metodo main() di esempio
