@@ -67,7 +67,6 @@ public class Principale {
     
     s.nuovaVendita("Fusilli", "Barilla", 300, 2.5);
     s.nuovaVendita("Pizza Surgelata", "Buitoni", 150, 4);
-    s.nuovaVendita("sugo pomodoro", "Barilla", 1000, 2);
     
     // Per accedere alle informazioni relative all'ultima vendita si utilizza il metodo ultimaVendita()
 

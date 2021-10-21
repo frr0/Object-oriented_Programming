@@ -5,6 +5,14 @@ public class Supermercato {
     // Inserire tutti gli attributi necessari, eventualmente creare altre classi
   String indirizzo = new String(); 
   double costoGiornaliero;
+
+  public Supermercato(String indirizzo, double costoGiornaliero, Vendita[] vendite, int n_vendite) {
+    this.indirizzo = indirizzo;
+    this.costoGiornaliero = costoGiornaliero;
+    this.vendite = vendite;
+    this.n_vendite = n_vendite;
+  }
+
   Vendita[] vendite = new Vendita[50]; 
   int n_vendite;
   
