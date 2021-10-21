@@ -167,7 +167,7 @@ public class TestSupermercato extends TestCase {
 		
 		s.setCostoGiornaliero(90);
 
-		System.out.println("Registrazione di piï¿½ vendite");
+		System.out.println("Registrazione di più vendite");
 		
 		s.nuovaVendita("Caffe", "Illy", 400, 2.5);
 		s.nuovaVendita("Caffe", "Borbone", 150, 1.8);

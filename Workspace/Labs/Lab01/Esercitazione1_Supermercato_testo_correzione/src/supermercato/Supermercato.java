@@ -4,7 +4,7 @@ public class Supermercato {
 
     // Inserire tutti gli attributi necessari, eventualmente creare altre classi
   String indirizzo = new String(); 
-  double costo;
+  double costoGiornaliero;
   Vendita[] vendite = new Vendita[50]; 
   int n_vendite;
   
@@ -12,7 +12,9 @@ public class Supermercato {
   * Crea un nuovo Supermercato (costruttore)
   */
   public Supermercato() {
-
+    // buona norma inizializzare attributi
+    indirizzo = "";
+    costoGiornaliero = 0;
   }
   
 
@@ -34,14 +36,14 @@ public class Supermercato {
   * Imposta il costo giornaliero del supermercato
   */
   public void setCostoGiornaliero(double s) {
-    costo = s;
+    costoGiornaliero = s;
   }
 
   /**
   * Restituisce il costo giornaliero del supermercato
   */
   public double getCostoGiornaliero() {
-    return costo;
+    return costoGiornaliero;
   }
 
   /**
@@ -51,7 +53,7 @@ public class Supermercato {
     Vendita v = new Vendita();
     v.nome = n;
     v.Marca = m;
-    v.Unità = u;
+    v.Unita = u;
     v.Prezzo = p;
 
     vendite[n_vendite] = v;
@@ -62,7 +64,7 @@ public class Supermercato {
   * Restituisce le informazioni relative all'ultima vendita
   */  
   public String ultimaVendita() {
-    return vendite[n_vendite-1].nome +", "+ vendite[n_vendite-1].Marca  +", "+ vendite[n_vendite-1].Unità +", "+  vendite[n_vendite-1].Prezzo;
+    return vendite[n_vendite-1].nome +", "+ vendite[n_vendite-1].Marca  +", "+ vendite[n_vendite-1].Unita +", "+  vendite[n_vendite-1].Prezzo;
   }
 
   /**
@@ -70,7 +72,7 @@ public class Supermercato {
   */  
   public String vendita(String n, String m) {
 	int i = 0; for(i=0; i<50; i++) { if(vendite[i].nome == m || vendite[i].Marca == m) { break; } }
-    return vendite[i].nome +", "+ vendite[i].Marca  +", "+ vendite[i].Unità +", "+  vendite[i].Prezzo;
+    return vendite[i].nome +", "+ vendite[i].Marca  +", "+ vendite[i].Unita +", "+  vendite[i].Prezzo;
   }
 
   /**
@@ -78,14 +80,14 @@ public class Supermercato {
   */  
   public double giorniCoperti() {
     double prezzo_tot = 0; for(int i=0; i<n_vendite; i++) { 
-    	prezzo_tot +=(vendite[i].Unità * vendite[i].Prezzo); 
-      System.out.println(vendite[i].Unità);
+    	prezzo_tot +=(vendite[i].Unita * vendite[i].Prezzo); 
+      System.out.println(vendite[i].Unita);
       System.out.println(vendite[i].Prezzo);
     }
     System.out.println(n_vendite);
     System.out.println(prezzo_tot);
-    System.out.println(costo);
-    return prezzo_tot/costo;
+    System.out.println(costoGiornaliero);
+    return prezzo_tot/costoGiornaliero;
   }
 }
 
