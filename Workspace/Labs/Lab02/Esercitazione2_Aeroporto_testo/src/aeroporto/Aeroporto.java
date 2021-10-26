@@ -6,7 +6,9 @@ public class Aeroporto {
 	int numeroAerei;
 	int numeroDecolli;
 	int nIdentificativo = 0;
+  int nTratta = 0;
 	Aereo[] aerei = new Aereo[50]; 
+  Tratta[] tratte = new Tratta[500];
 	
 	public Aeroporto(String denominazione, String indirizzo, int numeroAerei) {
 		this.denominazione = denominazione;
@@ -35,39 +37,71 @@ public class Aeroporto {
 	}
 	
 	public int aggiungiAereo(String modello, int capienza, int chilometriAutonomia) {
+		Aereo aereo = new Aereo(modello, capienza, chilometriAutonomia);
+		aerei[nIdentificativo] = aereo;
 		for (int i = 0; i < numeroAerei; i++) {
 			if (aerei[i].modello == modello) {
 				return i; 
 			}
 		}
-		Aereo aereo = new Aereo(modello, capienza, chilometriAutonomia);
-		aerei[nIdentificativo] = aereo;
 		return nIdentificativo++;
 	}
 	
 	public String aereo(int identificativoAereo) {
 
-		return identificativoAereo + ";" + aerei[identificativoAereo].modello;
+		return aerei[identificativoAereo].modello + ";" + aerei[identificativoAereo].capienza + ";" + aerei[identificativoAereo].kmXTratta;
 	}
 
 	public String[] aerei() {
-		return null;
+		String[] array = new String[nIdentificativo];
+		for (int i = 0; i<nIdentificativo; i++) {
+			array[i] = i + "; " + aerei[i].modello;
+		}
+		return array;
 	}
 
 	public String aggiungiViaggio(String nomeTratta, int numeroPasseggeri, int chilometriTratta) {
-		return null;
+    int bestAereo = 0;
+
+		Tratta tratta = new Tratta(nomeTratta, numeroPasseggeri, chilometriTratta);
+    tratte[nTratta] = tratta;
+    nTratta++;
+
+		for (int i = 0; i < nIdentificativo; i++) {
+      if ( aerei[i].capienza > numeroPasseggeri && aerei[i].kmXTratta > chilometriTratta ) {
+        if (aerei[i].capienza < aerei[bestAereo].capienza) {
+          bestAereo = i;
+        } else if (aerei[i].capienza == aerei[bestAereo].capienza) {
+            if (aerei[i].kmXTratta < aerei[bestAereo].kmXTratta) {
+              bestAereo = i;
+            } else if (aerei[i].kmXTratta == aerei[bestAereo].kmXTratta) {
+                return bestAereo + "; " + nomeTratta;
+            }
+        }
+      }
+		}
+		return bestAereo + "; " + nomeTratta;
 	}
 
 	public String viaggio(int identificativoAereo, String nomeTratta) {
-		return null;
+		return identificativoAereo + "; " + nomeTratta + "; " + tratte[identificativoAereo].capienza + "; " + tratte[identificativoAereo].kmXTratta;
 	}
 	
 	
 	public String viaggi() {
-		return null;
+    for (int i = 0; i < nTratta; i++) {
+      return i + "; " + tratte[i].nomeT + "; " + tratte[i].capienza + "; " + tratte[i].kmXTratta;
+      /* break; */
+    }
+    return null;
 	}
 
 	public String viaggiPerTratta(String nomeTratta) {
+    for (int i = 0; i < nTratta; i++) {
+      if (nomeTratta == tratte[i].nomeT) {
+        return i + "; " + tratte[i].nomeT + "; " + tratte[i].capienza + "; " + tratte[i].kmXTratta;
+      }
+    }
 		return null;
 	}
 }
