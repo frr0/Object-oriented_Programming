@@ -7,6 +7,5 @@ public class Tratta {
 	int kmXTratta;
     
 	public Tratta(String nomeT, int numeroPasseggeri, int chilometriTratta) {
-
     }
 }
