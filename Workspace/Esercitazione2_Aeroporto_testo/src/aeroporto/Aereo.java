@@ -58,7 +58,6 @@ public class Aereo {
          arr[j].capienza = temp2;  
          arr[j].kmXTratta = temp3;  
          arr[j].id = temp4;  
-
         }
       }
      }  
