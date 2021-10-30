@@ -30,6 +30,7 @@ public class Esempio {
     int id7 = a.aggiungiAereo("Modello7", 200, 3000);
     int id8 = a.aggiungiAereo("Modello8", 200, 3000);
     int id2 = a.aggiungiAereo("Modello1", 160, 3000);
+    int id9 = a.aggiungiAereo("Modello9", 160, 3000);
     int id3 = a.aggiungiAereo("Modello2", 200, 2900);
     
     System.out.println("Creati gli aerei con id " + id1 + ", " + id2 + " e " + id3 +"\n\n");
@@ -47,6 +48,11 @@ public class Esempio {
     
     System.out.println("\n\nCreazione di un viaggio\n\n");
     String viaggio1 = a.aggiungiViaggio("Torino-Bari", 170, 2800);
+    String viaggio4 = a.aggiungiViaggio("Torino-Bari", 174, 2800);
+    String viaggio5 = a.aggiungiViaggio("Torino-Bari", 80, 2800);
+    String viaggio6 = a.aggiungiViaggio("Torino-Bari", 90, 2800);
+    String viaggio7 = a.aggiungiViaggio("Torino-Bari", 100, 2800);
+    String viaggio8 = a.aggiungiViaggio("Torino-Bari", 110, 2800);
     
     System.out.println("Creazione di un viaggio\n\n");
     String viaggio2 = a.aggiungiViaggio("Torino-Bari", 190, 3000);
