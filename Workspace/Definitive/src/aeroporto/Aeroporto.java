@@ -59,13 +59,13 @@ public class Aeroporto {
   
   public String aereo(int identificativoAereo) {
 
-    return aerei[identificativoAereo].modello + "; " + aerei[identificativoAereo].capienza + "; " + aerei[identificativoAereo].kmXTratta;
+    return aerei[identificativoAereo].modello + ";" + aerei[identificativoAereo].capienza + ";" + aerei[identificativoAereo].kmXTratta;
   }
 
   public String[] aerei() {
     String[] array = new String[nIdentificativo];
     for (int i = 0; i<nIdentificativo; i++) {
-      array[i] = i + "; " + aerei[i].modello;
+      array[i] = i + ";" + aerei[i].modello;
     }
     return array;
   }
@@ -92,17 +92,17 @@ public class Aeroporto {
                 if (aerei[i].kmXTratta == aerei[j].kmXTratta){
                   aerei[i].alreadyTaken = true;
                   tratte[nTratta-1].id = aerei[i].id;
-                  return aerei[i].id + "; " + nomeTratta;
+                  return aerei[i].id + ";" + nomeTratta;
                 } else {
                   aerei[i].alreadyTaken = true;
                   tratte[nTratta-1].id = aerei[i].id;
-                  return aerei[i].id + "; " + nomeTratta;
+                  return aerei[i].id + ";" + nomeTratta;
                 }
               /* } */
           } else if (aerei[i].capienza != aerei[j].capienza) {
               aerei[i].alreadyTaken = true;
               tratte[nTratta-1].id = aerei[i].id;
-              return aerei[i].id + "; " + nomeTratta;
+              return aerei[i].id + ";" + nomeTratta;
           }
         }
       }
@@ -121,7 +121,7 @@ public class Aeroporto {
     //cicle to find everithing
     for (int i = 0; i < nTratta; i++) {
       if (tratte[i].id == identificativoAereo) {
-        return identificativoAereo + "; " + nomeTratta + "; " + tratte[i].capienza + "; " + tratte[i].kmXTratta;
+        return identificativoAereo + ";" + nomeTratta + ";" + tratte[i].capienza + ";" + tratte[i].kmXTratta;
       }
     }
     /* return identificativoAereo + "; " + nomeTratta + "; " + tratte[nTratta].capienza + "; " + tratte[nTratta].kmXTratta; */
@@ -132,7 +132,8 @@ public class Aeroporto {
   public String viaggi() {
     /* Aereo.bubbleSortC(aerei, nIdentificativo); // sort per avere in prima posizione tra gli aerei giusti quello con meno posti */
     String a = ""; 
-    for (int i = 0; i < nTratta; i++) { a += tratte[i].id + "; " + tratte[i].nomeT + "; " + tratte[i].capienza + "; " + tratte[i].kmXTratta + "\n"; }
+    for (int i = 0; i < nTratta; i++) { a += tratte[i].id + ";" + tratte[i].nomeT + ";" + tratte[i].capienza + ";" + tratte[i].kmXTratta + "\n"; }
+    a = a.substring(0, a.length()-1) + "";
     return a;
   }
 
@@ -140,8 +141,9 @@ public class Aeroporto {
     /* Aereo.bubbleSortC(aerei, nIdentificativo); // sort per avere in prima posizione tra gli aerei giusti quello con meno posti */
     String a = ""; 
     for (int i = 0; i < nTratta; i++) {
-      if (nomeTratta == tratte[i].nomeT) { a += tratte[i].id + "; " + tratte[i].nomeT + "; " + tratte[i].capienza + "; " + tratte[i].kmXTratta + "\n"; }
+      if (nomeTratta == tratte[i].nomeT) { a += tratte[i].id + ";" + tratte[i].nomeT + ";" + tratte[i].capienza + ";" + tratte[i].kmXTratta + "\n"; }
     }
+    a = a.substring(0, a.length()-1) + "";
     return a;
   }
 }
