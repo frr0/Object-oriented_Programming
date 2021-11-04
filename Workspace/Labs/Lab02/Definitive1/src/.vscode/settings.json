@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/fra/Dropbox (Politecnico Di Torino Studenti)/Anno_II.1/OOP/Object-oriented_Programming/Workspace/Definitive/Esercitazione2_Aeroporto_test.jar"
+    ]
+}
