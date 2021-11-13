@@ -17,13 +17,37 @@ public class Vendita {
 
 	//second part
 	public String nome;
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(final String nome) {
+		this.nome = nome;
+	}
+	public String getMarca() {
+		return Marca;
+	}
+	public void setMarca(final String marca) {
+		Marca = marca;
+	}
+	public int getUnita() {
+		return Unita;
+	}
+	public void setUnita(final int unita) {
+		Unita = unita;
+	}
+	public double getPrezzo() {
+		return Prezzo;
+	}
+	public void setPrezzo(final double prezzo) {
+		Prezzo = prezzo;
+	}
 	public String Marca;
 	public int Unita;
 	public double Prezzo;
-	
+
 	//important!!!!!!!!!!!!
 	//source generate costruct fields
-	
+
 	// public void percentuale(int U1, int U2) {
     //
 	//     double V = 50;
@@ -36,6 +60,6 @@ public class Vendita {
 	//     System.out.println(per + "%");
 	//
 	// }
-	
+
 
 }
