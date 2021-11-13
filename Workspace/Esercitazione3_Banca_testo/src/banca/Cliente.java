@@ -36,7 +36,7 @@ public class Cliente {
   }
 
   public String descriviti() {
-    return codiceFiscale + cognome + nome + professione;
+    return codiceFiscale  + " " + cognome  + " " + nome  + " " + professione;
   }
 
   public void setNome(String nome) {

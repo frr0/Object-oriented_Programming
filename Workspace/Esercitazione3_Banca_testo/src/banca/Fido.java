@@ -46,7 +46,7 @@ public class Fido extends Prestito{
 	}
 
 	public String descriviti() {
-		return getCodC() + getTipoPrestito() + getVal_prestito() + getTasso();
+		return getCodC()  + " " + getTipoPrestito()  + " " + getVal_prestito()  + " " + getTasso();
 	}
 
 }

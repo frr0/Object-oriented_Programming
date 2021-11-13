@@ -48,7 +48,8 @@ public class Conto {
   }
 
   public String descriviti() {
-    return codice + tassoInteresse + capitale + dataApertura + nomeOperatore + nomeFiliale;
+    // System.err.println("hjklghsdlghsdlghsdfl " + codice);
+    return codice + " " + tassoInteresse  + " " + capitale + " " + dataApertura  + " " + nomeOperatore  + " " + nomeFiliale;
   }
 
   /* public void setCapitale(double capitale2) { */

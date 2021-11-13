@@ -31,7 +31,7 @@ public class Banca {
 
   public Conto cercaConto(String codiceConto) {
     for (int i = 0; i<conti.length; i++) {
-      System.out.println(conti.length);
+      /* System.out.println(conti.length); */
 
       if (codiceConto.compareTo(conti[i].getCodice()) == 0) {
         return conti[i];
@@ -41,19 +41,22 @@ public class Banca {
   }
 
   public Conto[] cercaConti(String daCercare) {
+  Conto trovati[] = new Conto[1000];
     for (int i = 0; i<conti.length; i++) {
-      System.out.println(conti.length);
+      /* System.out.println(conti.length); */
 
       Boolean found;
       found = conti[i].getNomeOperatore().contains(daCercare);
       if (found == true) {
+        trovati[i] = conti[i];
         found = false;
-        return conti;
+        return trovati;
       }
       found = conti[i].getNomeFiliale().contains(daCercare);
       if (found == true) {
+        trovati[i] = conti[i];
         found = false;
-        return conti;
+        return trovati;
       }
 
     }
@@ -94,7 +97,7 @@ public class Banca {
           /* System.out.println("gdfjksghjksdlghsdfjkghsdfklh"); */
           /* System.out.println("here"); */
     for (int q= 0; q<n_clienti; q++) {
-          System.out.println(clienti[q].getCodiceFiscale());
+//          System.out.println(clienti[q].getCodiceFiscale());
       if (codiceFiscale.compareTo(clienti[q].getCodiceFiscale()) == 0) {
         return clienti[q];
       }

@@ -51,7 +51,7 @@ public class Mutuo extends Prestito {
 	/* } */
 
 	public String descriviti() {
-		return getCodC() + getTipoPrestito() + getVal_prestito();
+		return getCodC()  + " " + getTipoPrestito()  + " " + getVal_prestito();
 	}
 
 }

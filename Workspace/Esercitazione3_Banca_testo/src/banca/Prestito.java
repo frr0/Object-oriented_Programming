@@ -59,7 +59,7 @@ public class Prestito {
 
 
 	public String descriviti() {
-		return getCodC() + getVal_prestito() + getTipoPrestito();
+		return getCodC()  + " " + getVal_prestito()  + " " + getTipoPrestito();
 	}
 	
 }
