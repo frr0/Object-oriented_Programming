@@ -6,8 +6,7 @@ public class Cliente {
   private String nome;
   private String professione;
   Conto c[] = new Conto[10];
-  Prestito pc[] = new Prestito[2];
-  Prestito pc1[] = new Prestito[4];
+  Prestito pc[] = new Prestito[10];
   Fido fc[] = new Fido[10];
   Mutuo mc[] = new Mutuo[10];
   int n_of_conti = 0;

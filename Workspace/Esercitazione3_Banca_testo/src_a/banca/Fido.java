@@ -7,8 +7,8 @@ public class Fido extends Prestito{
 	/* private String tipoPrestito; */
 	private double tasso;
 
-	public Fido(String codC, double val_prestito, String tipoPrestito,String CF, double tasso) {
-		super(codC, val_prestito, tipoPrestito, CF);
+	public Fido(String codC, double val_prestito, String tipoPrestito, double tasso) {
+		super(codC, val_prestito, tipoPrestito);
 		this.tasso = tasso;
 	}
 
@@ -46,7 +46,7 @@ public class Fido extends Prestito{
 	}
 
 	public String descriviti() {
-		return getCodC() +" "+CF + " " + getTipoPrestito()  + " " + getTasso()  + " " + getVal_prestito();
+		return getCodC()  + " " + getTipoPrestito()  + " " + getVal_prestito()  + " " + getTasso();
 	}
 
 }

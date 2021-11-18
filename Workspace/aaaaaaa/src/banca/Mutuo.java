@@ -14,8 +14,8 @@ public class Mutuo extends Prestito {
 		/* this.setTasso(tasso); */
 	// }
 
-	public Mutuo(String codC, double val_prestito, String tipoPrestito, String CF) {
-		super(codC, val_prestito, tipoPrestito, CF);
+	public Mutuo(String codC, double val_prestito, String tipoPrestito) {
+		super(codC, val_prestito, tipoPrestito);
 	}
 
 	// public String getCodC() {
@@ -51,7 +51,7 @@ public class Mutuo extends Prestito {
 	/* } */
 
 	public String descriviti() {
-		return getCodC()+" "+CF  + " " + getTipoPrestito()  + " " + getVal_prestito();
+		return getCodC()  + " " + getTipoPrestito()  + " " + getVal_prestito();
 	}
 
 }

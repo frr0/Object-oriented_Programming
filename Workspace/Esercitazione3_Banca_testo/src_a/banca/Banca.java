@@ -5,14 +5,11 @@ public class Banca {
   Conto conti[] = new Conto[1000];
   Fido[] fidi = new Fido[1000];
   Mutuo[] mutui = new Mutuo[1000];
-  Prestito[] prestiti = new Prestito[3];
-  Prestito[] prestiti2 = new Prestito[4];
-  Prestito[] pp= new Prestito[1];
+  Prestito[] prestiti = new Prestito[1000];
   Cliente clienti[] = new Cliente[300];
   int i = -1;
   String I;
-  int a = 0, o = 0;
-  int b = 0;
+  int a = 0;
   int w = 0;
   int ww = 0;
   int www = 0;
@@ -23,7 +20,7 @@ public class Banca {
   }
 
   public Conto nuovoConto(double tassoInteresse, double capitale, String dataApertura, String nomeOperatore, String nomeFiliale) {
-    i++; o++;
+    i++;
     if (i < 10) { I = "00" + Integer.toString(i); }
     else if (i > 10 && i < 100) { I = "0" + Integer.toString(i); }
     else if (i > 100 && i < 1000) { I = Integer.toString(i); }
@@ -33,7 +30,7 @@ public class Banca {
   }
 
   public Conto cercaConto(String codiceConto) {
-    for (int i = 0; i<o; i++) {
+    for (int i = 0; i<conti.length; i++) {
       /* System.out.println(conti.length); */
 
       if (codiceConto.compareTo(conti[i].getCodice()) == 0) {
@@ -44,31 +41,26 @@ public class Banca {
   }
 
   public Conto[] cercaConti(String daCercare) {
-  Conto trovati[] = new Conto[2];
-    for (int i = 0; i<o; i++) {
+  Conto trovati[] = new Conto[1000];
+    for (int i = 0; i<conti.length; i++) {
       /* System.out.println(conti.length); */
 
-      Boolean found1, found2;
-      String aaaaa = conti[i].getNomeOperatore().toLowerCase();
-      found1 = aaaaa.contains(daCercare);
-      if (found1 == true) {
-        trovati[b] = conti[i];
-        b++;
-//        found1 = false; 
-//        return trovati; 
+      Boolean found;
+      found = conti[i].getNomeOperatore().contains(daCercare);
+      if (found == true) {
+        trovati[i] = conti[i];
+        found = false;
+        return trovati;
       }
-      String aaaab = conti[i].getNomeFiliale().toLowerCase();
-      found2 = aaaab.contains(daCercare);
-      if (found2 == true && found1 == false) {
-        trovati[b] = conti[i];
-        b++;
-        found2 = false;
-//        return trovati;
+      found = conti[i].getNomeFiliale().contains(daCercare);
+      if (found == true) {
+        trovati[i] = conti[i];
+        found = false;
+        return trovati;
       }
-        found1 = false;
 
     }
-    return trovati;
+    return null;
   }
   // ================================================================================================================================
   // ================================================================================================================================
@@ -78,24 +70,23 @@ public class Banca {
   // ================================================================================================================================
 
   public Cliente nuovoCliente(String codiceFiscale, String cognome, String nome, String professione) {
-	if (this.n_clienti == 0) {
+	if (n_clienti == 0) {
     i = 0;
 		Cliente cc = new Cliente(codiceFiscale, cognome, nome, professione);
-		clienti[i] = cc; n_clienti++; 
+		clienti[i] = cc; n_clienti++; i++;
 	} else {
-      for (int ii = 0; ii<n_clienti; ii++) {
+      for (int i = 1; i<n_clienti; i++) {
           /* System.out.println("gdfjksghjksdlghsdfjkghsdfklh"); */
-        if (codiceFiscale.compareTo(clienti[ii].getCodiceFiscale()) == 0) {
+        if (codiceFiscale.compareTo(clienti[i].getCodiceFiscale()) == 0) {
           /* System.out.println("gdfjksghjksdlghsdfjkghsdfklh"); */
-          clienti[ii].setNome(nome);
-          clienti[ii].setCognome(cognome);
-          clienti[ii].setProfessione(professione);
-  return clienti[ii];
+          clienti[i].setNome(nome);
+          clienti[i].setCognome(cognome);
+          clienti[i].setProfessione(professione);
           /* System.out.println("gdfjksghjksdlghsdfjkghsdfklh"); */
         }
       }
       Cliente cc = new Cliente(codiceFiscale, cognome, nome, professione);
-      clienti[++i] = cc; n_clienti++;
+      clienti[i] = cc; n_clienti++;
     }
 
   /* System.out.println("gdfjksghjksdlghsdfjkghsdfklh"); */
@@ -116,17 +107,15 @@ public class Banca {
   }
   
   public boolean[] associaClienteConto(String codiceFiscale, String[] codiciConto) {
-    boolean[] b = new boolean[codiciConto.length];
+    boolean[] b = new boolean[1000];
     for (int i = 0; i < n_clienti; i++) {
       if (codiceFiscale.compareTo(clienti[i].getCodiceFiscale()) == 0) {
 		for (int j = 0; j<codiciConto.length; j++) {
-			for (int k = 0; k<codiciConto.length+1; k++) {
+			for (int k = 0; k<codiciConto.length; k++) {
 			  if (codiciConto[j].compareTo(conti[k].getCodice()) == 0) {
-          clienti[i].c[k!=2?k:1] = conti[k];
+          clienti[i].c[k] = conti[k];
           clienti[i].n_of_conti++;
-				  b[j] = true;
-          if (j == 1) return b;
-          if (codiciConto.length == 1) return b;
+				  b[i] = true;
 			  }
 			}
 		}
@@ -153,7 +142,7 @@ public class Banca {
       if (codiceFiscale.compareTo(clienti[q].getCodiceFiscale()) == 0) {
       for (int u = 0; u<clienti[q].n_of_conti; u++) {
           aa += clienti[q].c[u].getCodice() + "\n";
-         } 
+        }
       }
     }
     aa = aa.substring(0, aa.length()-1);
@@ -188,10 +177,10 @@ public class Banca {
 /*  è stato versato l’importo del prestito */
 
   public Fido nuovoPrestito(String codiceConto, String codiceCliente, double importo, double rataMensile, double tassoRischio) {
-  Fido f = new Fido(codiceConto, importo, "F", codiceCliente, tassoRischio);
+  Fido f = new Fido(codiceConto, importo, "F", tassoRischio);
     for (int q= 0; q<n_clienti; q++) {
       if (codiceCliente.compareTo(clienti[q].getCodiceFiscale()) == 0 && tassoRischio <= 0.75) {
-      for (int u = 0; u<(o!=4?clienti[q].n_of_conti+1:4); u++) {
+      for (int u = 0; u<clienti[q].n_of_conti; u++) {
         if (codiceConto.compareTo(clienti[q].c[u].getCodice()) == 0) {
           clienti[q].c[u].setCapitale(clienti[q].c[u].getCapitale() + importo);
           fidi[w] = f;
@@ -223,11 +212,10 @@ public class Banca {
    /*   sortisce alcun effetto. */
 
   public Mutuo nuovoPrestito(String codiceConto, String codiceCliente, double importo, double rataMensile, int numeroMesi) {
-  Mutuo m = new Mutuo(codiceConto, importo, "M", codiceCliente);
+  Mutuo m = new Mutuo(codiceConto, importo, "M");
     for (int q= 0; q<n_clienti; q++) {
       if (codiceCliente.compareTo(clienti[q].getCodiceFiscale()) == 0) {
-      for (int u = 0; u<clienti[q].n_of_conti+1; u++) {
-        if (clienti[q].c[u] == null) return null;
+      for (int u = 0; u<clienti[q].n_of_conti; u++) {
         if (codiceConto.compareTo(clienti[q].c[u].getCodice()) == 0 && clienti[q].mc[u] == null) {
           clienti[q].c[u].setCapitale(clienti[q].c[u].getCapitale() + importo);
           mutui[www] = m;
@@ -284,8 +272,7 @@ public class Banca {
       if (codiceFiscale.compareTo(clienti[q].getCodiceFiscale()) == 0) {
         /* for (int u = 0; u<clienti[q].n_of_conti; u++) { */
         /*   if (codiceFiscale.compareTo(clienti[q].c[u].getCodice()) == 0) { */
-        pp[0]=clienti[q].pc[0];
-            return pp;
+            return clienti[q].pc;
         /*   } */
         /* } */
     }

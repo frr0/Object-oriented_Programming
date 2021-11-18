@@ -5,19 +5,18 @@ public class Prestito {
 	private String codC;
 	private double val_prestito;
 	private String tipoPrestito;
-	String CF;
 	// private double tasso;
 	/* Fido f1 = new Fido(codC, val_prestito, tipoPrestito, 0); */
 	/* Mutuo m1 = new Mutuo(codC, val_prestito, tipoPrestito); */
 
 
 
-	public Prestito(String codC, double val_prestito, String tipoPrestito, String cF) {
+	public Prestito(String codC, double val_prestito, String tipoPrestito) {
 		this.codC = codC;
 		this.val_prestito = val_prestito;
 		this.tipoPrestito = tipoPrestito;
-		CF = cF;
 	}
+
 
 	public String getTipoPrestito() {
 		return tipoPrestito;
@@ -60,7 +59,7 @@ public class Prestito {
 
 
 	public String descriviti() {
-		return getCodC()+" "+CF + " " + getVal_prestito()  + " " + getTipoPrestito();
+		return getCodC()  + " " + getVal_prestito()  + " " + getTipoPrestito();
 	}
 	
 }

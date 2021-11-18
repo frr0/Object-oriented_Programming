@@ -54,8 +54,8 @@ public class Banca {
       if (found1 == true) {
         trovati[b] = conti[i];
         b++;
-//        found1 = false; 
-//        return trovati; 
+        /* found1 = false; */
+        /* return trovati; */
       }
       String aaaab = conti[i].getNomeFiliale().toLowerCase();
       found2 = aaaab.contains(daCercare);
@@ -63,7 +63,7 @@ public class Banca {
         trovati[b] = conti[i];
         b++;
         found2 = false;
-//        return trovati;
+        /* return trovati; */
       }
         found1 = false;
 
@@ -152,8 +152,9 @@ public class Banca {
     for (int q= 0; q<n_clienti; q++) {
       if (codiceFiscale.compareTo(clienti[q].getCodiceFiscale()) == 0) {
       for (int u = 0; u<clienti[q].n_of_conti; u++) {
-          aa += clienti[q].c[u].getCodice() + "\n";
-         } 
+          /* if (clienti[q].c[u].getCodice() != null) { */
+          aa += clienti[q].c[u].getCodice() + "\n";}
+        /* } */
       }
     }
     aa = aa.substring(0, aa.length()-1);
@@ -186,8 +187,9 @@ public class Banca {
 /*  e il codice cliente esistano, che il cliente sia associato al suddetto conto e che il tasso di rischio non superi lo 0.75.  */
 /*  Se tutte le suddette verifiche sono soddisfatte, il metodo attiva il fido e aggiorna il capitale associato al conto sul quale  */
 /*  è stato versato l’importo del prestito */
-
+{o = 0;}
   public Fido nuovoPrestito(String codiceConto, String codiceCliente, double importo, double rataMensile, double tassoRischio) {
+  Prestito[] prestiti1 = new Prestito[4];o++;
   Fido f = new Fido(codiceConto, importo, "F", codiceCliente, tassoRischio);
     for (int q= 0; q<n_clienti; q++) {
       if (codiceCliente.compareTo(clienti[q].getCodiceFiscale()) == 0 && tassoRischio <= 0.75) {
@@ -195,9 +197,12 @@ public class Banca {
         if (codiceConto.compareTo(clienti[q].c[u].getCodice()) == 0) {
           clienti[q].c[u].setCapitale(clienti[q].c[u].getCapitale() + importo);
           fidi[w] = f;
-          prestiti[ww] = f;
+          if(o<5){prestiti[ww] = f;}
+          prestiti1[ww] = f;
+          prestiti2[ww] = f;
           clienti[q].fc[u] = f;
           clienti[q].pc[u] = f;
+          clienti[q].pc1[u] = f;
           w++;
           ww++;
           return f;
@@ -234,8 +239,11 @@ public class Banca {
           clienti[q].mc[u] = m;
           clienti[q].pc[u] = m;
           prestiti[ww] = m;
+          prestiti2[ww] = m;
+          clienti[q].pc1[u] = m;
           www++;
           ww++;
+          // (clienti[q].pc!=null)?clienti[q].pc[3].:
           return m;
         }
       }
