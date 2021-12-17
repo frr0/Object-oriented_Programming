@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/home/fra/Dropbox (Politecnico Di Torino Studenti)/Anno_II.1/OOP/Object-oriented_Programming/Workspace/aaaaaaa/src/banca/.metadata/.plugins/org.eclipse.jdt.core
+709250448.index
+3842426239.index
+1865797976.index
