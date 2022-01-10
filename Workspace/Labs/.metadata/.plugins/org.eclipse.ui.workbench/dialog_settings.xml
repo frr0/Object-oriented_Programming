@@ -9,6 +9,7 @@
 	<section name="ZipFileImportWizard">
 		<item key="WizardZipFileResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
 		<list key="WizardZipFileResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/home/fra/Dropbox (Politecnico Di Torino Studenti)/Anno_II.1/OOP/Object-oriented_Programming/Workspace/palestra.zip"/>
 			<item value="/home/fra/Dropbox (Politecnico Di Torino Studenti)/Anno_II.1/OOP/esame_casaeditrice_testo.zip"/>
 		</list>
 	</section>
