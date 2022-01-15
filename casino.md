@@ -1,3 +1,5 @@
+### This is the worst repo for the worst organized course at Polythecnic of Turin with the worst programming language ever created!!!
+
 ```
 .
 ├── Casaeditrice
