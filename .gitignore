@@ -2,6 +2,10 @@
 *.html
 *.htm
 
+.settings
+.classpath
+.project
+
 # Compiled class file
 *.class
 
