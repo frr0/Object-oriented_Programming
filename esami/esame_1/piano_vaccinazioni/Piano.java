@@ -1,5 +1,6 @@
 package piano_vaccinazioni;
 
+
 import java.util.*;
 
 public class Piano {

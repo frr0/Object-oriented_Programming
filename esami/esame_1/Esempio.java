@@ -5,6 +5,7 @@ import piano_vaccinazioni.*;
 public class Esempio {
 
 	public static void main(String[] args) throws EccezioneConsegnateMenoDosi, EccezioneDosiVaccinoNonDisponibili {
+
 		
 		Piano p = new Piano();
 		

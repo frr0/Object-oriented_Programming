@@ -2,6 +2,7 @@ package piano_vaccinazioni;
 
 public class Centro {
 
+
 	public void setCodice(String codice) {
 		this.codice = codice;
 	}
