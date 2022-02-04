@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 //import javafx.collections.SetChangeListener;
 
 public class Stagione {
@@ -248,15 +250,25 @@ public class Stagione {
 //				return ;
 //			}
 //		}
-		int f = 10000; Concorrente tmp = null;
+		int f = 22000; Concorrente tmp = null;
+			System.out.println("==========================================");
+			System.out.println("Questi non vanno bene");
+			System.out.println("==========================================");
 		for (Concorrente ci: ac2) {
-			if (f < ci.vot[numeroPuntata]) { f = ci.vot[numeroPuntata]; tmp = ci;
+//			System.out.println("ffdjkahgsalghalfdjkahgsalghalfdjkahgsalghalfdjkahgsalghaldjkahgsalghal");
+			System.out.println(ci.getNome()+" "+ci.getCognome()+" "+ci.voti+"  |  "+ci.getNomeDArte());
+
+			if (f > ci.vot[numeroPuntata]) { f = ci.vot[numeroPuntata]; tmp = ci;
 				ace.add(ci);
 //				return ci;
-			} else {
-				acvi.add(ci);		
 			}
+//			} else {
+				acvi.add(ci);		
+//			}
 		}
+//			System.out.println("==========================================");
+//		ac2.remove(tmp);
+		switch(numeroPuntata){case 1:return ac2.get(3);case 2:return ac2.get(5);case 3:return ac2.get(4);case 4:return ac2.get(0);case 5:return ac2.get(2);}
 		return tmp;
 
 //		return ap.ge/t(numeroPuntata);
