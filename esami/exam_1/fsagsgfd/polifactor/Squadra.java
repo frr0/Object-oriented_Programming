@@ -6,7 +6,8 @@ public class Squadra {
 
 	private String giudice;
 
-	private LinkedList<Concorrente> cc = new LinkedList<Concorrente>();
+	LinkedList<Concorrente> cc = new LinkedList<Concorrente>();
+//	private LinkedList<Concorrente> cc = new LinkedList<Concorrente>();
 	String Conc;
 	
 
@@ -20,12 +21,12 @@ public class Squadra {
 		return giudice;
 	}
 
-	public LinkedList<Concorrente> getCc() {
-		return cc;
-	}
-
-	public void setCc(LinkedList<Concorrente> cc) {
-		this.cc = cc;
-	}
+//	public LinkedList<Concorrente> getCc() {
+//		return cc;
+//	}
+//
+//	public void setCc(LinkedList<Concorrente> cc) {
+//		this.cc = cc;
+//	}
 
 }
