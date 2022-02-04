@@ -8,7 +8,7 @@ public class Concorrente {
 	private String codice;
 	private String dataNascita;
 	int numPuntata;
-	int voti; int vot[]; //	int flag;
+	int voti; int[] vot = {0,0,0,0,0,0,0,0,0,0}; //	int flag;
 	String titolo;
 	String giudice = null;	public String getGiudice(){return giudice;}public void setGiudice(String giudice){this.giudice=giudice;}
 

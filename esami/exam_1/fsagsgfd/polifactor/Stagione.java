@@ -16,6 +16,7 @@ public class Stagione {
 	int numeroStagione = 0; 
 	LinkedHashMap<String, Concorrente> mapc = new LinkedHashMap<>();
 	LinkedList<Concorrente> ac = new LinkedList<Concorrente>();
+	LinkedList<Concorrente> ac2 = new LinkedList<Concorrente>();
 
 	// LA MAPPA PI� UTILE NON LHAI FATTA
 	LinkedHashMap<String, Concorrente> mappaCodiciConcorrenti = new LinkedHashMap<>();LinkedHashMap<Integer, LinkedList<Brano>> mape = new LinkedHashMap<>();int n = 1;
@@ -165,7 +166,7 @@ public class Stagione {
 		tmp.numPuntata = numeroPuntata;
 		tmp.titolo = titolo;
 		tmp.voti = voti;
-//		tmp.vot[numeroPuntata] = voti;
+		tmp.vot[numeroPuntata] = voti;ac2.add(tmp);
 //		mape.put(numeroPuntata, i);
 //		mape.put(numeroPuntata, a);
 //		p.mapesib.put(tmp, i);
@@ -180,13 +181,16 @@ public class Stagione {
 		tmp.numPuntata = numeroPuntata;
 		tmp.titolo = titolo;
 		tmp.voti = voti;
-//		tmp.vot[numeroPuntata] = voti;
+//		System.out.println(voti);
+//		System.out.println(voti);
+//		System.out.println("vjksdghlsdghsdfjlghsdfghsdfjkghdfghsdfjklghdflghdflhgdflhgdfl");
+		tmp.vot[numeroPuntata] = voti; ac2.add(tmp);
 		ab.add(c);mape.put(numeroPuntata, a); a.add(c);
 //		=======================================
 //		p.mapesib.put(tmp, c);
 //		p.aesib.add(p.mapesib.put(tmp, c));
 //		=======================================
-		a.add(c);
+//		a.add(c);
 //		for (Concorrente ci : ac) { if (codiceConcorrente == ci.getCodice()) {
 //		mape.put(numeroPuntata, a); 
 		return c;
@@ -244,15 +248,16 @@ public class Stagione {
 //				return ;
 //			}
 //		}
-		for (Concorrente ci: ac) {
-			if (numeroPuntata != ci.numPuntata) {
+		int f = 10000; Concorrente tmp = null;
+		for (Concorrente ci: ac2) {
+			if (f < ci.vot[numeroPuntata]) { f = ci.vot[numeroPuntata]; tmp = ci;
 				ace.add(ci);
-				return ci;
+//				return ci;
 			} else {
 				acvi.add(ci);		
 			}
 		}
-		return null;
+		return tmp;
 
 //		return ap.ge/t(numeroPuntata);
 	}
