@@ -10,7 +10,6 @@ public class Concorrente {
 	int numPuntata;
 	int voti;
 	String titolo;
-//	String giudice = null;
 	private String giudice = null;
 
 	public Concorrente(String nome, String nomeDArte, String cognome, String dataNascita) {
@@ -60,7 +59,7 @@ public class Concorrente {
 	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}
-	
+
 	public String getGiudice() {
 		return giudice;
 	}
@@ -68,4 +67,5 @@ public class Concorrente {
 	public void setGiudice(String giudice) {
 		this.giudice = giudice;
 	}
+	
 }

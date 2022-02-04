@@ -6,7 +6,7 @@ public class Esempio {
 
 	public static void main(String[] args) throws EccezioneLimiteConcorrenti, EccezioneConcorrenteAssegnatoAltraSquadra {
 			
-		Stagione1 st = new Stagione1(1);
+		Stagione st = new Stagione(1);
 		
 		System.out.println("/******************************/");
 		System.out.println("/**      R1. CONCORRENTI     **/");

@@ -8,9 +8,8 @@ public class Concorrente {
 	private String codice;
 	private String dataNascita;
 	int numPuntata;
-	int voti;
+	int voti; int vot[]; //	int flag;
 	String titolo;
-//	String giudice = null;
 	private String giudice = null;
 
 	public Concorrente(String nome, String nomeDArte, String cognome, String dataNascita) {
@@ -60,7 +59,7 @@ public class Concorrente {
 	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}
-	
+
 	public String getGiudice() {
 		return giudice;
 	}
@@ -68,4 +67,5 @@ public class Concorrente {
 	public void setGiudice(String giudice) {
 		this.giudice = giudice;
 	}
+	
 }

@@ -15,7 +15,7 @@ public class Stagione {
 	LinkedHashMap<String, Concorrente> mapc = new LinkedHashMap<>();
 	LinkedList<Concorrente> ac = new LinkedList<Concorrente>();
 
-	// LA MAPPA PIï¿½ UTILE NON LHAI FATTA
+	// LA MAPPA PIù UTILE NON LHAI FATTA
 	LinkedHashMap<String, Concorrente> mappaCodiciConcorrenti = new LinkedHashMap<>();
 	LinkedHashMap<String, Squadra> mapsq = new LinkedHashMap<>();
 	LinkedList<Squadra> asq = new LinkedList<Squadra>();
@@ -108,7 +108,7 @@ public class Stagione {
 		
 		if(s==null || c==null ) return;	//Se il concorrente o la squadra non esistono, il metodo non sortisce alcun effetto
 		
-		if(s.getCc().contains(c)) return; //analogamente se il concorrente ï¿½ giï¿½ assegnato a quella squadra. 
+		if(s.getCc().contains(c)) return; //analogamente se il concorrente è già assegnato a quella squadra. 
 		
 		if(s.getCc().size()>=maxDim) {
 			throw new EccezioneLimiteConcorrenti();
@@ -123,7 +123,7 @@ public class Stagione {
 //se non ho problemi lo aggiungo alla squadra	
 		s.getCc().add(c);
 //aggiorno concorrente
-		s.setGiudice(giudice);
+		c.setGiudice(giudice);
 	
 			
 	
@@ -132,13 +132,11 @@ public class Stagione {
 	public Collection<Concorrente> elencoConcorrentiSquadra(String giudice) {
 		LinkedList<Concorrente> tmp = new LinkedList<Concorrente>();
 		
-		
-//		for (Squadra si: asq) {
-//		for (Squadra si: asq) {
-//			if (giudice.compareTo(si.getGiudice()) == 0) {
-//				return si.getCc();
-//			}
-//		}
+		for (Squadra si: asq) {
+			if (giudice.compareTo(si.getGiudice()) == 0) {
+				return si.getCc();
+			}
+		}
 		
 	/*	for (Concorrente ci: ac) {
 			if (giudice.compareTo(ci.giudice) == 0) {
@@ -151,8 +149,7 @@ public class Stagione {
 //			}
 //		}
 //		return ac.stream().sorted(Comparator.comparing(Concorrente::giudice)).collect(Collectors.toList());
-//		return tmp;
-		return mapsq.get(giudice).cc;
+		return tmp;
 	}
 
 	public Puntata nuovaPuntata(int numero, String data) {
@@ -258,5 +255,8 @@ public class Stagione {
 	}
 	
 }
+
+
+
 
 

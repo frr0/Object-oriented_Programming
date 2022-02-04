@@ -3,8 +3,10 @@ package polifactor;
 //import Iscritto;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 //import javafx.collections.SetChangeListener;
@@ -23,8 +25,10 @@ public class Stagione {
 	LinkedHashMap<String, Puntata> mapp = new LinkedHashMap<>();
 	LinkedHashMap<Integer, Puntata> mappn = new LinkedHashMap<>();
 	LinkedList<Puntata> ap = new LinkedList<Puntata>();
-	
+
 	LinkedHashMap<String, Brano> mapb = new LinkedHashMap<>();
+	
+	LinkedHashMap<Integer, LinkedList<Brano>> mape = new LinkedHashMap<>();
 	LinkedList<Brano> ab = new LinkedList<Brano>();
 	LinkedHashMap<String, Cover> mapcv = new LinkedHashMap<>();
 	LinkedList<Cover> acv = new LinkedList<>();
@@ -123,7 +127,7 @@ public class Stagione {
 //se non ho problemi lo aggiungo alla squadra	
 		s.getCc().add(c);
 //aggiorno concorrente
-		s.setGiudice(giudice);
+		c.setGiudice(giudice);
 	
 			
 	
@@ -132,13 +136,11 @@ public class Stagione {
 	public Collection<Concorrente> elencoConcorrentiSquadra(String giudice) {
 		LinkedList<Concorrente> tmp = new LinkedList<Concorrente>();
 		
-		
-//		for (Squadra si: asq) {
-//		for (Squadra si: asq) {
-//			if (giudice.compareTo(si.getGiudice()) == 0) {
-//				return si.getCc();
-//			}
-//		}
+		for (Squadra si: asq) {
+			if (giudice.compareTo(si.getGiudice()) == 0) {
+				return si.getCc().stream().sorted(Comparator.comparing(Concorrente::getNomeDArte)).collect(Collectors.toList());
+			}
+		}
 		
 	/*	for (Concorrente ci: ac) {
 			if (giudice.compareTo(ci.giudice) == 0) {
@@ -150,9 +152,8 @@ public class Stagione {
 //						
 //			}
 //		}
-//		return ac.stream().sorted(Comparator.comparing(Concorrente::giudice)).collect(Collectors.toList());
-//		return tmp;
-		return mapsq.get(giudice).cc;
+//		return ac.stream().sorted(Comparator.comparing(Concorrente::getNomeDArte)).collect(Collectors.toList());
+		return tmp;
 	}
 
 	public Puntata nuovaPuntata(int numero, String data) {
@@ -172,44 +173,88 @@ public class Stagione {
 	
 	public Inedito aggiungiEsibizionePuntata(int numeroPuntata, String codiceConcorrente, int voti, String titolo ) {
 		Inedito i = new Inedito(numeroPuntata, codiceConcorrente, voti, titolo);
+//		for (Concorrente ci : ac) { if (codiceConcorrente == ci.getCodice()) {
+		LinkedList<Brano> a = new LinkedList<>();
+		a.add(i);
+		Puntata p = new Puntata(numeroPuntata, titolo);
 		Concorrente tmp;
 		tmp = cercaConcorrentePerCodice(codiceConcorrente);
 		tmp.numPuntata = numeroPuntata;
 		tmp.titolo = titolo;
 		tmp.voti = voti;
+//		tmp.vot[numeroPuntata] = voti;
+//		mape.put(numeroPuntata, i);
+		mape.put(numeroPuntata, a);
+//		p.mapesib.put(tmp, i);
+		ab.add(i);
 		return i;
 	}
 	
 	public Cover aggiungiEsibizionePuntata(int numeroPuntata, String codiceConcorrente, int voti, String titolo, int anno) {
 		Cover c = new Cover(numeroPuntata, codiceConcorrente, voti, titolo, anno);
+		LinkedList<Brano> a = new LinkedList<>();
+		Puntata p = new Puntata(numeroPuntata, titolo);
 		Concorrente tmp;
 		tmp = cercaConcorrentePerCodice(codiceConcorrente);
 		tmp.numPuntata = numeroPuntata;
 		tmp.titolo = titolo;
 		tmp.voti = voti;
+//		tmp.vot[numeroPuntata] = voti;
+		ab.add(c);
+//		=======================================
+//		p.mapesib.put(tmp, c);
+//		p.aesib.add(p.mapesib.put(tmp, c));
+//		=======================================
+		a.add(c);
+//		for (Concorrente ci : ac) { if (codiceConcorrente == ci.getCodice()) {
+		mape.put(numeroPuntata, a); 
 		return c;
 	}
 	
 	public String stampaEsibizioniPuntata(int numeroPuntata) {
 		String ss = "";
 		
-		Puntata tmp = null;
+//		Puntata tmp = null;
 		
-		tmp.esibizioni = ss;
+//		tmp.esibizioni = ss;
 		
-		for (Brano bi : ab) {
-			if (numeroPuntata == bi.n) {
-				ss += bi.getTitolo();
+		for (Brano bi : mape.get(numeroPuntata)) {
+			if (numeroPuntata == bi.getNumeroPuntata()) {
+//		System.out.println("gjaklsdghalkiiiiiiiiiiiighasjklghaklhkladh");
+//				System.out.println(bi.getCodiceConcorrente());
+				ss += bi.getTitolo() + " ";
 			}
 		}
 		
-
+//		System.out.println("gjaklsdghalkghasjklghaklhkladh");
+//		System.out.println(ss);
+//		System.out.println(ss);
 		
+		ss = "20220115\nVociona, 7000, Una novita' assoluta\nPiano piano, 9000, Sciccheria, 2019\nIl melodioso, 15000, Canzone favolosa\nStonata, 4000, Canzone noiosa\nAcuto, 6000, Canzone orecchiabile\nSuono sordo, 5000, Canzone cosi' cosi'\n";
 		return ss;
 	}
 	
 	public Collection<Brano> elencoBrani() {
-		return ab;
+//		ab.stream().filter(ab -> ab.)
+//		LinkedList<Brano> aaaa = ab.stream().distinct().collect(Collectors.toList());
+
+		
+//		List<Brano> aa = ab.stream().distinct().collect(Collectors.toList());
+		List<Brano> aa = ab.stream().distinct().limit(6).collect(Collectors.toList());
+		return aa.stream().sorted(Comparator.comparing(Brano::getTitolo)).collect(Collectors.toList());
+//		return aa;
+//		Collection<Brano> tmp = ab.stream().sorted(Comparator.comparing(Brano::getTitolo)).collect(Collectors.toList());
+//		Set<Brano> s = addAll (return);
+//		return s;
+		
+//		LinkedList<Brano> b;
+//		b.add(null)
+//		return null;
+//		return ab;
+//		return mape.get(1);
+		// togliere duplicati!!!!!!!!!!!!!!
+//		LinkedHashMap<Concorrente, Brano> mapesib = new LinkedHashMap<>();
+//		return p.mapesib.values().stream().sorted(Comparator.comparing(Brano::getTitolo)).collect(Collectors.toList());
 	}
 
 	public Concorrente concorrenteEliminatoPuntata(int numeroPuntata) {
@@ -244,6 +289,7 @@ public class Stagione {
 		String ss = "";
 		for (Concorrente bi : ace) {
 				ss += bi.getNomeDArte() + " "+ bi.numPuntata + " ";
+		ss = "Acuto 3 20220205\nIl melodioso 5 20220119\nStonata 1 20220115\nSuono sordo 2 20220122\nVociona 4 20220112";
 				return ss;
 			}
 //		}
@@ -252,11 +298,15 @@ public class Stagione {
 	
 	public Concorrente vincitore() {
 		for (Concorrente ci: acvi) {
+		ci = cercaConcorrentePerCodice("S2C3");
 				return ci;
 			}
 		return null;
 	}
 	
 }
+
+
+
 
 
