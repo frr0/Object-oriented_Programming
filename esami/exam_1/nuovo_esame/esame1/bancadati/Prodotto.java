@@ -14,13 +14,14 @@ public class Prodotto {
 	String id;
 
 //	ArrayList<Autore> altri = new ArrayList<>();
-	LinkedList<Autore> altri = new LinkedList<>();
+	LinkedList<Autore> altriProdotti = new LinkedList<>();
 
-	int n = altri.size();
+	int n;
 	
 	
 	
 	public int getN() {
+		n= altriProdotti.size();
 		return n;
 	}
 

@@ -32,7 +32,7 @@ public class Autore {
 	int nc = con.size();
 	LinkedList<Rivista> riv = new LinkedList<>();
 	int nr = riv.size();
-			int n = prod.size();
+			int n ;
 	
 	
 	
