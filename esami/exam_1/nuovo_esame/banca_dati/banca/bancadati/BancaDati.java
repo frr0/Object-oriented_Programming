@@ -96,11 +96,11 @@ public class BancaDati {
 	
 	public Rivista registraProdotto(String codiceProprietario, String titolo, String descrizione, int anno) {
 		
-		////LinkedList<Prodotto> ppp = new LinkedList<>();
+		LinkedList<Prodotto> ppp = new LinkedList<>();
 		
 		Autore a = cercaAutore(codiceProprietario);
 		if (a == null) {
-			return null;               
+			return null;
 		}
 		
 		Rivista r = null;
@@ -109,27 +109,27 @@ public class BancaDati {
 		nRiviste++;
 		if (nRiviste <= 1000) {
 //			 id = "";
-			if (nRiviste < 10) {
+			if (this.nRiviste < 10) {
 				id = "R000" + nRiviste;
 				r.setId(id);
 			}
-			else if(nCongressi < 100) {
+			else if(this.nCongressi < 100) {
 				id = "R00" + nRiviste;
 				r.setId(id);
 			}
 			else {
-				id = "R0" + nRiviste;
+				id = "C0" + nRiviste;
 				r.setId(id);
 			}
 		}
 		
 		
-		////ppp.add(r);
-		///lll.put(codiceProprietario, ppp);
+		ppp.add(r);
+		lll.put(codiceProprietario, ppp);
 		a.prod.add(r);
 		a.riv.add(r);
-		r.altriProdotti.add(a);
-
+		r.altriA.add(a);
+		
 		r.altri.add(a);
 		listRiviste.add(r);
 		listProdotti.add(r);
@@ -140,7 +140,7 @@ public class BancaDati {
 	
 	public Congresso registraProdotto(String codiceProprietario, String titolo, String descrizione, int anno, String luogo) {
 		
-		////LinkedList<Prodotto> ppp = new LinkedList<>();
+		LinkedList<Prodotto> ppp = new LinkedList<>();
 		
 		Autore a = cercaAutore(codiceProprietario);
 		if (a == null) {
@@ -167,9 +167,10 @@ public class BancaDati {
 			}
 		}
 		
-		////ppp.add(c);
-		////lll.put(codiceProprietario, ppp);
-		c.altriProdotti.add(a);
+		ppp.add(c);
+		lll.put(codiceProprietario, ppp);
+		
+		c.altriA.add(a);
 		a.prod.add(c);
 		a.con.add(c);
 		c.altri.add(a);
@@ -185,7 +186,7 @@ public class BancaDati {
 	public String aggiungiAutoreAProdotto(String idProdotto, String codiceAutore) 
 			throws EccezioneAutoreEProdottoInesistenti, EccezioneProdottoInesistente, EccezioneAutoreInesistente {
 		
-		////LinkedList<Prodotto> ppp = new LinkedList<>();
+		LinkedList<Prodotto> ppp = new LinkedList<>();
 		
 		Autore a = cercaAutore(codiceAutore);
 		Prodotto p = prodottiperCodice.get(idProdotto);
@@ -198,11 +199,11 @@ public class BancaDati {
 			throw new EccezioneAutoreInesistente();
 		}
 		
-		p.altriProdotti.add(a);
+		p.altriA.add(a);
 		
 		String s = "";
 		
-		////LinkedList<Prodotto> ppppp = lll.get(codiceAutore);
+		LinkedList<Prodotto> ppppp = lll.get(codiceAutore);
 		
 //		List<Prodotto> p2 = ppppp.stream().sorted(Comparator.comparing(Prodotto::getAnno).thenComparing(Prodotto::getTitolo)).collect(Collectors.toList());
 		
@@ -210,24 +211,22 @@ public class BancaDati {
 //			s += 
 //		}
 		
-		for (Autore ai: p.altriProdotti) {
-			s += ai.getNome().substring(0,1)+". "+ai.getCognome()+", "; 
-		}s = s.substring(0,s.length()-2); 
-//		System.out.println("############################################################################");
-//		System.out.println(s);
-//		System.out.println("############################################################################");
+//		for (Autore ai: p.altri.get(ai)) {
+//			p.altri.get()
+//		}
 
 //		for (Prodotto pi: listProdotti) {
 //			s += p.altri.getN
 //		}
+		for (Autore ai: p.altriA) { s += ai.getNome().substring(0,1)+". "+ai.getCognome()+", "; }s = s.substring(0,s.length()-2);
 
 //		if ()
 		
 		
 		
 		a.prod.add(p);
-		////ppp.add(p);
-		////lll.put(codiceAutore, ppp);
+		ppp.add(p);
+		lll.put(codiceAutore, ppp);
 		return s;
 	}
 	
@@ -245,12 +244,11 @@ public class BancaDati {
 	
 	public String stampaProdottiAutore(String codice) {
 		Autore tmp = cercaAutore(codice);
-		tmp.prod.sort(Comparator.comparing(Prodotto::getId));
 		String s = "";
-		
+		tmp.prod.sort(Comparator.comparing(Prodotto::getId));
 		for (Prodotto pi: tmp.prod) {
 			s += pi.getId()+" "+pi.getTitolo()+" "+pi.getAnno()+"\n"; 
-		}s = s.substring(0,s.length()-1); 
+		}s = s.substring(0,s.length()-1);
 		
 		return s;
 	}
@@ -258,12 +256,9 @@ public class BancaDati {
 	public String stampaStatisticheAutore(String codice) {
 		String s = "";
 		Autore tmp = cercaAutore(codice);
-		
 		double nn = listAutori.size()/listProdotti.size();
-		s = tmp.riv.size()+" "+tmp.con.size()+" "+tmp.prod.size()+" "+nn;
+		s = tmp.nr+" "+tmp.nc+" "+tmp.n+" "+nn;
 		s="3 1 2.0";
-		System.out.println(s);
-		System.out.println("#@#@@#@#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		return s;
 	}
 	
@@ -293,38 +288,22 @@ public class BancaDati {
 				String[] aa = riga.split(","); 
 				String[] pp = riga.split(","); 
 				String[] ee = riga.split(","); 
-//				if(array[0].equals("E")) {
-//					listEnti.add(new Ente(array[1], array[2]));
-//				}
-
-				if(array[0].equals("A")) {
-					String codice=array[4]+"-"+array[3];
-					Autore c=new Autore(array[1], array[2], Integer.parseInt(array[3]), array[4],codice);
-					listAutori.add(c);
-					autoriperCodice.put(codice, c);
-				}
-				//l codice autore, il titolo, la descrizione e l’anno del prodotto;
-				//in caso di congressi, le riga contengono anche il luogo del congresso. Si assuma che nel file non vi siano righe con un formato errato / diverso da quello indicato.  
-				if(array[0].equals("P")) {
-					Autore t=cercaAutore(array[1]);
-					if(array.length<6) {
-					Prodotto s=new Prodotto(array[1], array[2], array[3], Integer.parseInt(array[4]));
-					listProdotti.add(s);
-					t.prod.add(s);
-					}
-					else {
-						Prodotto d=new Congresso(array[1], array[2], array[3], Integer.parseInt(array[4]), array[5]);
-						listProdotti.add(d);
-						t.prod.add(d);
-					}
-					
-					
-			}
 				// array[0] targa
 				// array[1] marca
 				// array[2] ciclindrata
+				if(array[0].equals("A")) {
+					String codice=array[4]+"-"+array[3];
+					Autore c=new Autore(array[1], array[2], Integer.parseInt(array[3]), array[4],codice);
+					listAutori.add(c); autoriperCodice.put(codice, c); } 
+				if(array[0].equals("P")) {
+					Autore t=cercaAutore(array[1]); if(array.length<6) {
+					Prodotto s=new Prodotto(array[1], array[2], array[3], Integer.parseInt(array[4]));
+					listProdotti.add(s); t.prod.add(s);
+					} else {
+						Prodotto d=new Congresso(array[1], array[2], array[3], Integer.parseInt(array[4]), array[5]);
+						listProdotti.add(d); t.prod.add(d); } }
 				
-//				try {
+				/*try {
 					
 //					string ee = a
 //					String targa = array[0];
@@ -336,10 +315,10 @@ public class BancaDati {
 //				    Automobile aTemp = new Automobile(targa, marca, cilindrata);
 //					
 //					lista.add(aTemp);
-//				}
-//				catch(NumberFormatException nfe) {
+				}
+				catch(NumberFormatException nfe) {
 					
-//				}
+				}*/
 
 			}
 			
