@@ -1,6 +1,7 @@
 /.metadata/
 *.html
 *.htm
+*.vim
 
 .settings
 .classpath
