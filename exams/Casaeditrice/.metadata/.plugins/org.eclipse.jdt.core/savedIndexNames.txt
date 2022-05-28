@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/home/fra/Dropbox (Politecnico Di Torino Studenti)/Anno_II.1/OOP/Object-oriented_Programming/Casaeditrice/.metadata/.plugins/org.eclipse.jdt.core
+1097963841.index
+1865797976.index
+2638446480.index

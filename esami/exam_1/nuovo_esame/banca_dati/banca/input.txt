@@ -1,3 +1,0 @@
-E;POLIMI;Politecnico di Milano
-A;Azzurri;Gianni;99999;POLIMI
-P;POLIMI-99999;Surviving with object-orientation;Programming Journal;2017
